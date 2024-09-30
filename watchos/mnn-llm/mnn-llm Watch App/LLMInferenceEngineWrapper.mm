@@ -35,8 +35,10 @@ const char* GetMainBundleDirectory() {
 - (BOOL)loadModel {
     if (!llm) {
         std::string model_dir = GetMainBundleDirectory();
-        std::string config_path = model_dir + "/qwen2-vl-2b-instruct/config.json";
+        std::string config_path = model_dir + "/qwen2-0.5b-instruct/config.json";
         llm = Llm::createLLM(config_path);
+        // NSString *tempDirectory = NSTemporaryDirectory();
+        // llm->set_config("{\"tmp_path\":\"" + std::string([tempDirectory UTF8String]) + "\"}");
         llm->load();
     }
     return YES;
